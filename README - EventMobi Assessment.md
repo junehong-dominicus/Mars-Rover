@@ -59,5 +59,3 @@ See `input.txt` in this repo for a sample test input.
 - Include what versions of software are needed to build your app.
 - Write the code knowing that you'll need to enhance it in the next part of the interview process.
 - Be prepared to give a brief overview on your design decisions.
-
-- **Don't hesitate to ask us for clarifications**
