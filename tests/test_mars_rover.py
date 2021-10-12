@@ -26,7 +26,7 @@ class TestRover(unittest.TestCase):
         plateau = Plateau(7, 7)
         position = Position(0, 0)
 
-        rover = Rover(plateau, position, Rover.DIRECTIONS['W'])
+        rover = Rover(plateau, position, Rover.DIRECTIONS.get('W'))
 
         self.assertEqual(Position(0, 0), rover.position)
         self.assertEqual(plateau, rover.plateau)
