@@ -24,7 +24,6 @@ turn_left: heading - 1
 """
 
 class Rover(object):
-    # TODO: active available commands and execute key values
     AVAILABLE_COMMANDS = {
         'M': 'move',
         'L': 'turn_left',
@@ -97,7 +96,7 @@ class Rover(object):
     def move(self):
         if not self.plateau.move_available(self.position):
             return False
-        # Assume that the square directly North from (x, y) is (x, y+1).
+
         if self.DIRECTIONS['N'] == self.heading:
             self.position.y += 1
         elif self.DIRECTIONS['E'] == self.heading:

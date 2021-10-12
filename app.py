@@ -23,22 +23,19 @@ def main():
                     plateau = Plateau(ord(received_values[0])-ord('0'), ord(received_values[1])-ord('0'))
                 else:
                     print("Plateau is already set")
-            else:
+            else: # Landing / Instructions
                 if plateau is None:
                     print("Plateau is not set")
                     continue
-                # Landing / Instructions
                 received_params = received_data[0].split(" ")
                 if received_params[1] == "Landing":
                     received_values = received_data[1].split(" ")
                     position = Position(ord(received_values[0])-ord('0'), ord(received_values[1])-ord('0'))
-                    if rover_table.get(received_params[0]) is not None: # delete and set again
-                        rover_table.delete(received_params[0])
                     rover = Rover(plateau, position, Rover.DIRECTIONS.get(received_values[2]))
                     rover_table.add(received_params[0], rover)
                 elif received_params[1] == "Instructions":
                     rover = rover_table.get(received_params[0])
-                    if rover is not None: # Check Landing position is set
+                    if rover is not None: # Check Landing position or previous position
                         rover.process(received_data[1])
                         rover_table.add(received_params[0], rover)
                         print(received_params[0] + ":" + str(rover))
