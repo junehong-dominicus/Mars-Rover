@@ -56,7 +56,7 @@ class TestHashMap(unittest.TestCase):
         self.assertEqual(hmap.get("10"), "Heidi")
         hmap.delete("7")
         self.assertEqual(hmap.get("7"), None)
-        hmap.update("8", "Judy")
+        hmap.add("8", "Judy")
         self.assertEqual(hmap.get("8"), "Judy")
 
 class TestInstruction1(unittest.TestCase):

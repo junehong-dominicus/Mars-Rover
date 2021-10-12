@@ -9,7 +9,7 @@ def main():
     plateau = None
     rover_table = HashMap()
     n = len(sys.argv)
-    if n == 2:  # Check if input filename is passsed. 
+    if n == 2:  # Check if input filename is passsed.
         input_file = open(sys.argv[1], 'r')
         Lines = input_file.readlines()
         for line in Lines:
@@ -40,7 +40,7 @@ def main():
                     rover = rover_table.get(received_params[0])
                     if rover is not None: # Check Landing position is set
                         rover.process(received_data[1])
-                        rover_table.update(received_params[0], rover)
+                        rover_table.add(received_params[0], rover)
                         print(received_params[0] + ":" + str(rover))
                     else:
                         print("No landing data")

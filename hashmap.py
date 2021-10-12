@@ -1,10 +1,22 @@
 # Hash Map
+"""
+Array of HashMap with Lists (Number of hash key is 10).
++------------+------------+------------+------------+
+| HashMap[0] | HashMap[1] |    ....    | HashMap[9] |
++------------+------------+------------+------------+
+        |           |                           |
+        |           |                           +--- list: [key, value], ........
+        |           |
+        |           +------------------------------- list: [key, value], ........
+        |
+        +------------------------------------------- list: [key, value], ........
+"""
 class HashMap:
     def __init__(self):
-        self.size = 10          # Maximum number of Rovers?
+        self.size = 10          # Number of key_hash
         self.map = [None] * self.size
 
-    def _get_hash(self, key):   # Need to check if collisions would happen.
+    def _get_hash(self, key):
         hash = 0
         for char in str(key):
             hash += ord(char)
@@ -17,9 +29,9 @@ class HashMap:
         if self.map[key_hash] is None:
             self.map[key_hash] = list([key_value])
             return True
-        else:
+        else:   # collision happens.
             for pair in self.map[key_hash]:
-                if pair[0] == key:
+                if pair[0] == key:   # Alreay added key, update value.
                     pair[1] = value
                     return True
             self.map[key_hash].append(key_value)
@@ -33,9 +45,9 @@ class HashMap:
                     return pair[1]
         return None
 
-    def update(self, key, value):
-        self.delete(key)
-        self.add(key, value)
+    # def update(self, key, value):
+    #     self.delete(key)
+    #     self.add(key, value)
 
     def delete(self, key):
         key_hash = self._get_hash(key)
