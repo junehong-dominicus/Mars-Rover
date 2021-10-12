@@ -14,6 +14,7 @@ Mars-Rover\ ............. The "Mars-Rover root directory"
   input_10.text
   README - EventMobi Assessment.md
   README - How to build and run.md
+  README - Python3 virtualenv setup.md
   README.md
   marsrover\
     __init__.py
