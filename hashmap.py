@@ -45,10 +45,6 @@ class HashMap:
                     return pair[1]
         return None
 
-    # def update(self, key, value):
-    #     self.delete(key)
-    #     self.add(key, value)
-
     def delete(self, key):
         key_hash = self._get_hash(key)
 
