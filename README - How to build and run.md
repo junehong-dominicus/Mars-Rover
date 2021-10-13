@@ -5,9 +5,10 @@
 
 This is a sketch of the Mars-Rover project directory structure:
 ```
-Mars-Rover\ ............. The "Mars-Rover root directory"
-  app.py
-  hashmap.py
+Mars-Rover\ ............................... Mars-Rover root directory
+  app.py .................................. main function of project
+  hashmap.py .............................. data structure for saving rovers
+  instruction_parser.py ................... input data parser
   input.text
   input_1.text
   input_2.text
@@ -16,12 +17,12 @@ Mars-Rover\ ............. The "Mars-Rover root directory"
   README - How to build and run.md
   README - Python3 virtualenv setup.md
   README.md
-  marsrover\
+  marsrover\ ............................. rover object
     __init__.py
     plateau.py
     position.py
     rover.py
-  tests\
+  tests\ ................................. unit test
     __init__.py
     test_mars_rover.py
 ```

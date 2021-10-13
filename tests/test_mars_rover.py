@@ -1,9 +1,55 @@
 import unittest
 from marsrover import *
 from hashmap import HashMap
+from instruction_parser import InstructionParser
+
+class TestInstructionParser(unittest.TestCase):
+    def testInstructionParserConstructor(self):
+        parser = InstructionParser()
+
+        parameter, rovername, command, values = parser.parse_instruntion("Plateau:5 5")
+        self.assertEqual(parameter, "Plateau")
+        self.assertEqual(rovername, None)
+        self.assertEqual(command, None)
+        self.assertEqual(values[0], "5")
+        self.assertEqual(values[1], "5")
+
+        parameter, rovername, command, values = parser.parse_instruntion("Rover1 Landing:1 2 N")
+        self.assertEqual(parameter, "Rover1 Landing")
+        self.assertEqual(rovername, "Rover1")
+        self.assertEqual(command, "Landing")
+        self.assertEqual(values[0], "1")
+        self.assertEqual(values[1], "2")
+        self.assertEqual(values[2], "N")
+
+        parameter, rovername, command, values = parser.parse_instruntion("Rover2 Instructions:MMRMMRMRRM")
+        self.assertEqual(parameter, "Rover2 Instructions")
+        self.assertEqual(rovername, "Rover2")
+        self.assertEqual(command, "Instructions")
+        self.assertEqual(values[0], "MMRMMRMRRM")
+
+        parameter, rovername, command, values = parser.parse_instruntion("")
+        self.assertEqual(parameter, None)
+        self.assertEqual(rovername, None)
+        self.assertEqual(command, None)
+        self.assertEqual(values, None)
+
+        parameter, rovername, command, values = parser.parse_instruntion("Rover2 abc:MMRMMRMRRM")
+        self.assertEqual(parameter, "Rover2 abc")
+        self.assertEqual(rovername, "Rover2")
+        self.assertEqual(command, "abc")
+        self.assertEqual(values[0], "MMRMMRMRRM")
+
+        parameter, rovername, command, values = parser.parse_instruntion("Rover1 abc:1 2 N")
+        self.assertEqual(parameter, "Rover1 abc")
+        self.assertEqual(rovername, "Rover1")
+        self.assertEqual(command, "abc")
+        self.assertEqual(values[0], "1")
+        self.assertEqual(values[1], "2")
+        self.assertEqual(values[2], "N")
 
 class TestPosition(unittest.TestCase):
-    def testConstructor(self):
+    def testPositionConstructor(self):
         # Create position instance with default values
         position = Position()
         self.assertEqual(position.x, 0)
@@ -15,14 +61,14 @@ class TestPosition(unittest.TestCase):
         self.assertEqual(position.y, 2)
 
 class TestPlateau(unittest.TestCase):
-    def testConstructor(self):
+    def testPlateauConstructor(self):
         plateau = Plateau(7, 10)
 
         self.assertEqual(plateau.width, 7)
         self.assertEqual(plateau.height, 10)
 
 class TestRover(unittest.TestCase):
-    def testConstructor(self):
+    def testRoverConstructor(self):
         plateau = Plateau(7, 7)
         position = Position(0, 0)
 
@@ -32,7 +78,7 @@ class TestRover(unittest.TestCase):
         self.assertEqual(plateau, rover.plateau)
 
 class TestHashMap(unittest.TestCase):
-    def testConstructor(self):
+    def testHashMapConstructor(self):
         hmap = HashMap()
         hmap.add("1", "Alice")
         hmap.add("2", "Bob")
@@ -60,7 +106,7 @@ class TestHashMap(unittest.TestCase):
         self.assertEqual(hmap.get("8"), "Judy")
 
 class TestInstruction1(unittest.TestCase):
-    def testConstructor(self):
+    def testInstruction1(self):
         plateau = Plateau(5, 5)
         position = Position(1, 2)
 
@@ -70,7 +116,7 @@ class TestInstruction1(unittest.TestCase):
         self.assertEqual(str(rover), "1 3 N")
 
 class TestInstruction2(unittest.TestCase):
-    def testConstructor(self):
+    def testInstruction2(self):
         plateau = Plateau(5, 5)
         position = Position(3, 3)
 
