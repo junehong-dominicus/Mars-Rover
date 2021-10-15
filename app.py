@@ -18,7 +18,7 @@ def main():
             parameter, rovername, command, values = parser.parse_instruntion(line)
             if parameter == "Plateau":
                 if plateau is None: # Initializing Plateau
-                    plateau = Plateau(ord(values[0])-ord('0'), ord(values[1])-ord('0'))
+                    plateau = Plateau(ord(values[0])-ord('0'), ord(values[1])-ord('0')) # To do: Unicode input support required
                 else:
                     print("Plateau is already set")
             else: # Landing / Instructions
@@ -26,7 +26,7 @@ def main():
                     print("Plateau is not set")
                     continue
                 if command == "Landing":
-                    position = Position(ord(values[0])-ord('0'), ord(values[1])-ord('0'))
+                    position = Position(ord(values[0])-ord('0'), ord(values[1])-ord('0')) # To do: Unicode input support required
                     rover = Rover(plateau, position, Rover.DIRECTIONS.get(values[2]))
                     rover_table.add(rovername, rover)
                 elif command == "Instructions":
