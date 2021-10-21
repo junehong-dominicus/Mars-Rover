@@ -36,3 +36,6 @@ Expected Output:
 Rover1:1 3 N
 Rover2:5 1 E
 ```
+
+
+* To do: check new position is empty
