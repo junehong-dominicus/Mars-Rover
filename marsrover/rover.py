@@ -15,7 +15,7 @@ Co-ordinates and Orientation.
            N = 1
              |
              |
- W = 3 ------+------ E = 2
+ W = 4 ------+------ E = 2
              |
              |
            S = 3
